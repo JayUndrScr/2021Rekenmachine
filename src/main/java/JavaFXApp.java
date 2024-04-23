@@ -42,18 +42,26 @@ public class JavaFXApp extends Application {
     }
 
     private void compute (String operator) {
-        int result = computation.compute(number1, number2);
+        int result;
         int number1 = getNumberFromTextField (txtNumber1);
         int number2 = getNumberFromTextField (txtNumber2);
 
         IComputation computation = null;
 
         switch (operator) {
+            case PLUS:
+                computation = new PlusComputation();
+                break;
+            case MULTIPLY:
+                computation = new MultiplyComputation();
+                break;
 
             case MULTIPLY:
                 computation = new MultiplyComputation();
                 break;
         }
+
+        result = computation.compute(number1, number2);
 
         txtResult.setText (String.valueOf (result));
     }
